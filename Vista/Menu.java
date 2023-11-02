@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
+
     public Menu() {
         // Configura la ventana
         setTitle("Dodgeball");
@@ -18,7 +19,7 @@ public class Menu extends JFrame {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         // Etiqueta de título
-        JLabel titulo = new JLabel("Juego de Ejemplo");
+        JLabel titulo = new JLabel("Dodgeball");
         titulo.setFont(new Font("Arial", Font.BOLD, 24));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(titulo);
@@ -53,8 +54,4 @@ public class Menu extends JFrame {
         setVisible(true);
     }
 
-   
 }
-
-
-
