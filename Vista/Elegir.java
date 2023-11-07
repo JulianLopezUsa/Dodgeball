@@ -3,14 +3,15 @@ package Dodgeball.Vista;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Elegir {
 
     public void elegirp(JPanel panel) {
         panel.removeAll();
-
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
         panel.add(buttonPanel);
@@ -24,8 +25,18 @@ public class Elegir {
         JButton Jug1 = new JButton("Jugador 1");
         JButton Jug2 = new JButton("Jugador 2");
 
+       
+        ImageIcon imagen1 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 1.png"); 
+        JLabel etiqueta1 = new JLabel(imagen1);
+
+        ImageIcon imagen2 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 2.png"); 
+        JLabel etiqueta2 = new JLabel(imagen2);
+
         panelJug1.add(Jug1);
+        panelJug1.add(etiqueta1);
+
         panelJug2.add(Jug2);
+        panelJug2.add(etiqueta2);
 
         buttonPanel.add(panelJug1);
         buttonPanel.add(panelJug2);
@@ -46,8 +57,7 @@ public class Elegir {
             panel.repaint();
         });
 
-        // Draw a line between the two halves
-
+        // Dibujar una línea entre las dos mitades
         panel.add(Box.createVerticalStrut(140));
         panel.revalidate();
         panel.repaint();

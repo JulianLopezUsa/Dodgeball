@@ -1,72 +1,79 @@
 package Dodgeball.Vista;
 
-import java.awt.Component;
-import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+
+
 import javax.swing.JPanel;
 
-public class Elegir {
+public class Tablero extends JPanel {
 
-    public void elegirp(JPanel panel) {
-        panel.removeAll();
+    @Override
+    protected void paintComponent(Graphics g) {
 
-        // Create a new panel with GridLayout to divide it into two halves
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+        super.paintComponent(g);
 
-        // Add the new panel to the main panel
-        panel.add(buttonPanel);
+        int anchoPanel = getWidth();
+        int altoPanel = getHeight();
 
-        // Create two sub-panels for each button
-        JPanel panelJug1 = new JPanel();
-        JPanel panelJug2 = new JPanel();
+        // Limpiar el panel
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, anchoPanel, altoPanel);
 
-        // Set layout for each sub-panel to center the buttons
-        panelJug1.setLayout(new FlowLayout(FlowLayout.CENTER));
-        panelJug2.setLayout(new FlowLayout(FlowLayout.CENTER));
+        g.setColor(Color.BLACK);
+        int anchoRectangulo = 1200;
+        int altoRectangulo = 700;
+        int xRectangulo = (anchoPanel - anchoRectangulo) / 2;
+        int yRectangulo = (altoPanel - altoRectangulo) / 2;
+        g.drawRect(xRectangulo, yRectangulo, anchoRectangulo, altoRectangulo);
 
-        // Create the "Jugador 1" and "Jugador 2" buttons
-        JButton Jug1 = new JButton("Jugador 1");
-        JButton Jug2 = new JButton("Jugador 2");
+        int xLinea = anchoPanel / 2;
+        g.drawLine(xLinea, yRectangulo, xLinea, yRectangulo + altoRectangulo);
 
-        // Add labels above each button
-        JLabel labelJug1 = new JLabel("Label Jugador 1");
-        JLabel labelJug2 = new JLabel("Label Jugador 2");
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 16));
 
-        // Add the buttons and labels to their respective sub-panels
-        panelJug1.add(labelJug1);
-        panelJug1.add(Jug1);
-        panelJug2.add(labelJug2);
-        panelJug2.add(Jug2);
+        String etiquetaIzquierda = "Jugador 1";
+        int xEtiquetaIzquierda = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaIzquierda)) / 4;
+        int yEtiquetaIzquierda = yRectangulo - 20;
+        g.drawString(etiquetaIzquierda, xEtiquetaIzquierda, yEtiquetaIzquierda);
 
-        // Add the sub-panels to the main panel
-        buttonPanel.add(panelJug1);
-        buttonPanel.add(panelJug2);
+        String etiquetaDerecha = "Jugador 2";
+        int xEtiquetaDerecha = (3 * anchoPanel + g.getFontMetrics().stringWidth(etiquetaDerecha)) / 4;
+        int yEtiquetaDerecha = yRectangulo - 20;
+        g.drawString(etiquetaDerecha, xEtiquetaDerecha, yEtiquetaDerecha);
 
-        // Add the action listeners to the buttons (same as before)
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 16));
+        String etiquetaCentral = "6 : 6";
+        int xEtiquetaCentral = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaCentral)) / 2;
+        int yEtiquetaCentral = yEtiquetaIzquierda;
+        g.drawString(etiquetaCentral, xEtiquetaCentral, yEtiquetaCentral);
 
-        Jug1.addActionListener(e -> {
-            Tablero tablero = new Tablero();
-            panel.removeAll();
-            panel.add(tablero);
-            panel.revalidate();
-            panel.repaint();
-        });
+        int numJugadores = 6;
+        int anchoJugador = 40;
+        int altoJugador = 40;
+        int espacioEntreJugadores = 10;
+        int xInicialIzquierda = xRectangulo + 10;
+        int yInicialIzquierda = yRectangulo + (altoRectangulo - (numJugadores * (altoJugador + espacioEntreJugadores))) / 2;
 
-        Jug2.addActionListener(e -> {
-            Tablero tablero = new Tablero();
-            panel.removeAll();
-            panel.add(tablero);
-            panel.revalidate();
-            panel.repaint();
-        });
+        for (int i = 0; i < numJugadores; i++) {
+            int xJugador = xInicialIzquierda;
+            int yJugador = yInicialIzquierda + i * (altoJugador + espacioEntreJugadores);
+            g.setColor(Color.RED); 
+            g.fillRect(xJugador, yJugador, anchoJugador, altoJugador);
+        }
 
-        // Draw a line between the two halves
-        panel.add(Box.createVerticalStrut(140));
-        panel.revalidate();
-        panel.repaint();
+        int xInicialDerecha = xRectangulo + anchoRectangulo - anchoJugador - 10;
+        int yInicialDerecha = yRectangulo + (altoRectangulo - (numJugadores * (altoJugador + espacioEntreJugadores))) / 2;
+
+        for (int i = 0; i < numJugadores; i++) {
+            int xJugador = xInicialDerecha;
+            int yJugador = yInicialDerecha + i * (altoJugador + espacioEntreJugadores);
+            g.setColor(Color.BLUE); 
+            g.fillRect(xJugador, yJugador, anchoJugador, altoJugador);
+        }
+
     }
 }
