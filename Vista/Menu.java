@@ -1,9 +1,15 @@
 package Dodgeball.Vista;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Component;
+import java.awt.Font;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 
 public class Menu extends JFrame {
 
@@ -13,45 +19,38 @@ public class Menu extends JFrame {
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
+    
         // Panel principal
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centra el panel
+    
         // Etiqueta de título
         JLabel titulo = new JLabel("Dodgeball");
-        titulo.setFont(new Font("Arial", Font.BOLD, 24));
+        titulo.setFont(new Font("Arial", Font.BOLD, 90));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(titulo);
-
+    
         // Botón para iniciar el juego
         JButton botonIniciar = new JButton("Iniciar Juego");
-        botonIniciar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonIniciar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Coloca aquí el código para iniciar el juego
-                JOptionPane.showMessageDialog(null, "El juego se iniciará ahora.");
-            }
-        });
-        panel.add(botonIniciar);
-
-        // Botón para salir del juego
         JButton botonSalir = new JButton("Salir");
+        botonIniciar.setAlignmentX(Component.CENTER_ALIGNMENT);
         botonSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        botonIniciar.addActionListener(e -> {
+            
+            Elegir elegir = new Elegir();
+            elegir.elegirp(panel, botonSalir);
+
         });
+    
+        panel.add(Box.createVerticalStrut(140)); 
+        panel.add(botonIniciar);
+        panel.add(Box.createVerticalStrut(10)); 
         panel.add(botonSalir);
-
-        // Agrega el panel al marco
-        add(panel);
-
-        // Muestra la ventana
+    
+        add(panel); 
+    
         setVisible(true);
     }
-
+    
 }
