@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Elegir {
 
@@ -22,7 +23,9 @@ public class Elegir {
         panelJug1.setLayout(new FlowLayout(FlowLayout.CENTER));
         panelJug2.setLayout(new FlowLayout(FlowLayout.CENTER));
 
+        JTextField nJugador1 = new JTextField(10);
         JButton Jug1 = new JButton("Jugador 1");
+        JTextField nJugador2 = new JTextField(10);
         JButton Jug2 = new JButton("Jugador 2");
 
        
@@ -32,9 +35,11 @@ public class Elegir {
         ImageIcon imagen2 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 2.png"); 
         JLabel etiqueta2 = new JLabel(imagen2);
 
+        panelJug1.add(nJugador1);
         panelJug1.add(Jug1);
         panelJug1.add(etiqueta1);
 
+        panelJug2.add(nJugador2);
         panelJug2.add(Jug2);
         panelJug2.add(etiqueta2);
 

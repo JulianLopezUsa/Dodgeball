@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -15,7 +16,7 @@ public class Tablero extends JPanel {
 
     public Tablero() {
         try {
-            backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.jpg")); 
+            backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,6 +50,8 @@ public class Tablero extends JPanel {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 25));
 
+
+        // Nombre de los jugadores
         String etiquetaIzquierda = "Jugador 1";
         int xEtiquetaIzquierda = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaIzquierda)) / 4;
         int yEtiquetaIzquierda = yRectangulo - 20;
@@ -59,6 +62,8 @@ public class Tablero extends JPanel {
         int yEtiquetaDerecha = yRectangulo - 20;
         g.drawString(etiquetaDerecha, xEtiquetaDerecha, yEtiquetaDerecha);
 
+
+        // Marcador
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 22));
         String etiquetaCentral = "6 : 6";
@@ -66,30 +71,38 @@ public class Tablero extends JPanel {
         int yEtiquetaCentral = yEtiquetaIzquierda;
         g.drawString(etiquetaCentral, xEtiquetaCentral, yEtiquetaCentral);
 
+
+        // pintar jugadores
         int numJugadores = 6;
-        int anchoJugador = 40;
-        int altoJugador = 40;
+        int anchoJugador = 60;
+        int altoJugador = 100;
         int espacioEntreJugadores = 10;
         int xInicialIzquierda = xRectangulo + 10;
         int yInicialIzquierda = yRectangulo
                 + (altoRectangulo - (numJugadores * (altoJugador + espacioEntreJugadores))) / 2;
 
+
+        Image imgJugadorIzquierdo = Toolkit.getDefaultToolkit().getImage("Dodgeball/src/Imagenes/Jugadores/Capa 1.png");
+
         for (int i = 0; i < numJugadores; i++) {
             int xJugador = xInicialIzquierda;
             int yJugador = yInicialIzquierda + i * (altoJugador + espacioEntreJugadores);
-            g.setColor(Color.RED);
-            g.fillRect(xJugador, yJugador, anchoJugador, altoJugador);
+           
+            g.drawImage(imgJugadorIzquierdo, xJugador, yJugador, anchoJugador, altoJugador, this);
         }
 
         int xInicialDerecha = xRectangulo + anchoRectangulo - anchoJugador - 10;
         int yInicialDerecha = yRectangulo
                 + (altoRectangulo - (numJugadores * (altoJugador + espacioEntreJugadores))) / 2;
 
+      
+        Image imgJugadorDerecho = Toolkit.getDefaultToolkit().getImage("Dodgeball/src/Imagenes/Jugadores/Capa 2.png");
+
         for (int i = 0; i < numJugadores; i++) {
             int xJugador = xInicialDerecha;
             int yJugador = yInicialDerecha + i * (altoJugador + espacioEntreJugadores);
-            g.setColor(Color.BLUE);
-            g.fillRect(xJugador, yJugador, anchoJugador, altoJugador);
+            // Dibuja la imagen en lugar del cuadro de color
+            g.drawImage(imgJugadorDerecho, xJugador, yJugador, anchoJugador, altoJugador, this);
         }
 
     }
