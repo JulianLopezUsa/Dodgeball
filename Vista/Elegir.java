@@ -1,5 +1,6 @@
 package Dodgeball.Vista;
 
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.Box;
@@ -9,9 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Elegir {
+public class Elegir extends JPanel {
 
+    
     public void elegirp(JPanel panel) {
+
         panel.removeAll();
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
@@ -28,11 +31,10 @@ public class Elegir {
         JTextField nJugador2 = new JTextField(10);
         JButton Jug2 = new JButton("Jugador 2");
 
-       
-        ImageIcon imagen1 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 1.png"); 
+        ImageIcon imagen1 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 1.png");
         JLabel etiqueta1 = new JLabel(imagen1);
 
-        ImageIcon imagen2 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 2.png"); 
+        ImageIcon imagen2 = new ImageIcon("Dodgeball/src/Imagenes/Jugadores/Capa 2.png");
         JLabel etiqueta2 = new JLabel(imagen2);
 
         panelJug1.add(nJugador1);
@@ -67,4 +69,5 @@ public class Elegir {
         panel.revalidate();
         panel.repaint();
     }
+
 }

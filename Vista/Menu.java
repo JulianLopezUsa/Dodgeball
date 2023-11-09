@@ -80,6 +80,11 @@ public class Menu extends JFrame {
             elegir.elegirp(panel);
 
         });
+        botonSalir.addActionListener(e -> {
+
+            System.exit(0);
+
+        });
 
         panel.add(Box.createVerticalStrut(300));
         panel.add(botonIniciar);

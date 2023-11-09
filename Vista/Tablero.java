@@ -13,8 +13,11 @@ import javax.swing.JPanel;
 public class Tablero extends JPanel {
 
     private Image backgroundImage;
+   
 
     public Tablero() {
+
+      
         try {
             backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.jpg"));
         } catch (IOException e) {
