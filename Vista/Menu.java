@@ -18,8 +18,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Menu extends JFrame {
+    
 
     private Image backgroundImage; // Variable para almacenar la imagen de fondo
+
+  
 
     public Menu() {
         try {
@@ -31,7 +34,7 @@ public class Menu extends JFrame {
         
         // Configura la ventana
         setTitle("Dodgeball");
-        setSize(1500, 900);
+        setSize(1300, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
