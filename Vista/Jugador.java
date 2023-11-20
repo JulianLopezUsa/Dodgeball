@@ -1,30 +1,17 @@
 package Dodgeball.Vista;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
 public class Jugador {
-    private Image imagenJugador;
     private int x;
     private int y;
+    private int velocidad;
 
-    public Jugador(String rutaImagen, int x, int y) {
-        try {
-            imagenJugador = ImageIO.read(new File(rutaImagen));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Jugador(int x, int y, int velocidad) {
         this.x = x;
         this.y = y;
+        this.velocidad = velocidad;
     }
 
-    public void dibujar(Graphics g) {
-        if (imagenJugador != null) {
-            g.drawImage(imagenJugador, x, y, null);
-        }
+    public Jugador(int i, int j) {
     }
 
     public int getX() {
@@ -35,11 +22,22 @@ public class Jugador {
         return y;
     }
 
-    public void setX(int newX) {
-        x = newX;
+    public void moverDerecha(int moveSpeed) {
+        x += velocidad;
     }
 
-    public void setY(int newY) {
-        y = newY;
+    public void moverIzquierda(int moveSpeed) {
+        x -= velocidad;
+    }
+
+    public void moverArriba(int moveSpeed) {
+        y -= velocidad;
+    }
+
+    public void moverAbajo(int moveSpeed) {
+        y += velocidad;
+    }
+
+    public void repaint() {
     }
 }

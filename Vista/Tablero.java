@@ -6,35 +6,38 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Dodgeball.Controlador.ControladorJugador;
 
+
 public class Tablero extends JPanel {
 
     private Image backgroundImage;
     private Jugador jugador;
-    private ControladorJugador controladorJugador;
+    private ControladorJugador controlador;
 
     public Tablero() {
 
-        jugador = new Jugador("ruta/a/tu/imagen/de/jugador.png", 100, 100);
-        controladorJugador = new ControladorJugador(jugador, null);
-        addKeyListener(controladorJugador);
+        jugador = new Jugador(100, 100, 5); // Ajusta esto según la lógica de tu clase Jugador
+        controlador = new ControladorJugador(jugador);
         setFocusable(true);
+        addKeyListener(controlador);
 
         try {
             backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        jugador = new Jugador(600, 200);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        jugador.dibujar(g);
 
         int anchoPanel = getWidth();
         int altoPanel = getHeight();
@@ -45,6 +48,10 @@ public class Tablero extends JPanel {
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+
+        g.setColor(Color.BLUE); // Color del jugador (puedes cambiarlo)
+        g.fillRect(jugador.getX(), jugador.getY(), 20, 20);
+
         g.setColor(Color.BLACK);
         int anchoRectangulo = 1180;
         int altoRectangulo = 577;

@@ -6,16 +6,14 @@ import java.awt.event.KeyListener;
 
 public class ControladorJugador implements KeyListener {
     private Jugador jugador;
-    private Runnable repaintCallback; // Nuevo campo para referenciar al método repaint
 
-    public ControladorJugador(Jugador jugador, Runnable repaintCallback) {
+    public ControladorJugador(Jugador jugador) {
         this.jugador = jugador;
-        this.repaintCallback = repaintCallback;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // No se usa en este caso
+        
     }
 
     @Override
@@ -23,18 +21,19 @@ public class ControladorJugador implements KeyListener {
         int key = e.getKeyCode();
         int moveSpeed = 5; // Velocidad de movimiento
 
-        // Mover el jugador según las teclas presionadas
-        if (key == KeyEvent.VK_LEFT) {
-            jugador.setX(jugador.getX() - moveSpeed);
-        } else if (key == KeyEvent.VK_RIGHT) {
-            jugador.setX(jugador.getX() + moveSpeed);
-        } else if (key == KeyEvent.VK_UP) {
-            jugador.setY(jugador.getY() - moveSpeed);
-        } else if (key == KeyEvent.VK_DOWN) {
-            jugador.setY(jugador.getY() + moveSpeed);
+        // Mover al jugador según las teclas presionadas
+        if (key == KeyEvent.VK_D) {
+            jugador.moverDerecha(moveSpeed);
+        } else if (key == KeyEvent.VK_A) {
+            jugador.moverIzquierda(moveSpeed);
+        } else if (key == KeyEvent.VK_W) {
+            jugador.moverArriba(moveSpeed);
+        } else if (key == KeyEvent.VK_S) {
+            jugador.moverAbajo(moveSpeed);
         }
 
-        repaintCallback.run(); // Volver a dibujar el tablero
+        
+        jugador.repaint();
     }
 
     @Override
