@@ -1,4 +1,4 @@
-package Dodgeball.Vista;
+package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import Dodgeball.Controlador.ControladorJugador;
+import Controlador.ControladorJugador;
 
 
 public class Tablero extends JPanel {
@@ -79,7 +79,7 @@ public class Tablero extends JPanel {
         // Marcador
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 22));
-        String etiquetaCentral = "6 : 6";
+        String etiquetaCentral = "0 : 0";
         int xEtiquetaCentral = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaCentral)) / 2;
         int yEtiquetaCentral = yEtiquetaIzquierda;
         g.drawString(etiquetaCentral, xEtiquetaCentral, yEtiquetaCentral);

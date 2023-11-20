@@ -1,8 +1,8 @@
-package Dodgeball.launcher;
+package launcher;
 
 import javax.swing.SwingUtilities;
 
-import Dodgeball.Vista.Menu;
+import Vista.Menu;
 
 public class Launcher {
     

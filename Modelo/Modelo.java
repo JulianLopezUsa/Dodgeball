@@ -1,4 +1,4 @@
-package Dodgeball.Modelo;
+package Modelo;
 
 
 public class Modelo {

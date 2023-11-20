@@ -1,4 +1,4 @@
-package Dodgeball.Vista;
+package Vista;
 
 public class Jugador {
     private int x;

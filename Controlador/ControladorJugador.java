@@ -1,6 +1,6 @@
-package Dodgeball.Controlador;
+package Controlador;
 
-import Dodgeball.Vista.Jugador;
+import Vista.Jugador;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

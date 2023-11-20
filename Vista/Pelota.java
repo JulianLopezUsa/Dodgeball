@@ -1,4 +1,4 @@
-package Dodgeball.Vista;
+package Vista;
 
 import java.awt.Graphics;
 import java.awt.Image;

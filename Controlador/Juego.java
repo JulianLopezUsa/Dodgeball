@@ -1,4 +1,4 @@
-package Dodgeball.Controlador;
+package Controlador;
 
 
 
