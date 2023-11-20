@@ -22,17 +22,16 @@ public class ControladorJugador implements KeyListener {
         int moveSpeed = 5; // Velocidad de movimiento
 
         // Mover al jugador según las teclas presionadas
-        if (key == KeyEvent.VK_D) {
+        if (key == KeyEvent.VK_RIGHT) {
             jugador.moverDerecha(moveSpeed);
         } else if (key == KeyEvent.VK_A) {
             jugador.moverIzquierda(moveSpeed);
-        } else if (key == KeyEvent.VK_W) {
+        } else if (key == KeyEvent.VK_UP) {
             jugador.moverArriba(moveSpeed);
         } else if (key == KeyEvent.VK_S) {
             jugador.moverAbajo(moveSpeed);
         }
 
-        
         jugador.repaint();
     }
 

@@ -1,6 +1,5 @@
 package Vista;
 
-
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.Box;
@@ -12,9 +11,7 @@ import javax.swing.JTextField;
 
 public class Elegir extends JPanel {
 
-    
     public void elegirp(JPanel panel) {
-
         panel.removeAll();
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
@@ -49,7 +46,10 @@ public class Elegir extends JPanel {
         buttonPanel.add(panelJug2);
 
         Jug1.addActionListener(e -> {
-            Tablero tablero = new Tablero();
+            String nombreJugador1 = nJugador1.getText();
+            String nombreJugador2 = nJugador2.getText();
+            
+            Tablero tablero = new Tablero(nombreJugador1, nombreJugador2);
             panel.removeAll();
             panel.add(tablero);
             panel.revalidate();
@@ -57,7 +57,10 @@ public class Elegir extends JPanel {
         });
 
         Jug2.addActionListener(e -> {
-            Tablero tablero = new Tablero();
+            String nombreJugador1 = nJugador1.getText();
+            String nombreJugador2 = nJugador2.getText();
+
+            Tablero tablero = new Tablero(nombreJugador1, nombreJugador2);
             panel.removeAll();
             panel.add(tablero);
             panel.revalidate();
@@ -69,5 +72,4 @@ public class Elegir extends JPanel {
         panel.revalidate();
         panel.repaint();
     }
-
 }

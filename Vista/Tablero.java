@@ -9,30 +9,43 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-
-import Controlador.ControladorJugador;
-
-
 public class Tablero extends JPanel {
 
     private Image backgroundImage;
-    private Jugador jugador;
-    private ControladorJugador controlador;
 
+    private int puntuacionJugador1;
+    private int puntuacionJugador2;
+    private String nombreJugador1;
+    private String nombreJugador2;
+
+    public void setMarcador(int puntuacionJugador1, int puntuacionJugador2) {
+        this.puntuacionJugador1 = puntuacionJugador1;
+        this.puntuacionJugador2 = puntuacionJugador2;
+    }
+
+    public void setNombresJugadores(String nombreJugador1, String nombreJugador2) {
+        this.nombreJugador1 = nombreJugador1;
+        this.nombreJugador2 = nombreJugador2;
+    }
+  
     public Tablero() {
-
-        jugador = new Jugador(100, 100, 5); // Ajusta esto según la lógica de tu clase Jugador
-        controlador = new ControladorJugador(jugador);
-        setFocusable(true);
-        addKeyListener(controlador);
-
         try {
             backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        jugador = new Jugador(600, 200);
+    // Constructor con parámetros para nombres de jugadores
+    public Tablero(String nombreJugador1, String nombreJugador2) {
+        try {
+            backgroundImage = ImageIO.read(new File("Dodgeball/src/Imagenes/Cancha.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        this.nombreJugador1 = nombreJugador1;
+        this.nombreJugador2 = nombreJugador2;
     }
 
     @Override
@@ -49,9 +62,6 @@ public class Tablero extends JPanel {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
 
-        g.setColor(Color.BLUE); // Color del jugador (puedes cambiarlo)
-        g.fillRect(jugador.getX(), jugador.getY(), 20, 20);
-
         g.setColor(Color.BLACK);
         int anchoRectangulo = 1180;
         int altoRectangulo = 577;
@@ -66,23 +76,21 @@ public class Tablero extends JPanel {
         g.setFont(new Font("Arial", Font.BOLD, 25));
 
         // Nombre de los jugadores
-        String etiquetaIzquierda = "Jugador 1";
-        int xEtiquetaIzquierda = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaIzquierda)) / 4;
-        int yEtiquetaIzquierda = yRectangulo - 20;
-        g.drawString(etiquetaIzquierda, xEtiquetaIzquierda, yEtiquetaIzquierda);
+        if (nombreJugador1 != null && nombreJugador2 != null) {
+            int xEtiquetaIzquierda = (anchoPanel - g.getFontMetrics().stringWidth(nombreJugador1)) / 4;
+            int yEtiquetaIzquierda = yRectangulo - 20;
+            g.drawString(nombreJugador1, xEtiquetaIzquierda, yEtiquetaIzquierda);
 
-        String etiquetaDerecha = "Jugador 2";
-        int xEtiquetaDerecha = (3 * anchoPanel + g.getFontMetrics().stringWidth(etiquetaDerecha)) / 4;
-        int yEtiquetaDerecha = yRectangulo - 20;
-        g.drawString(etiquetaDerecha, xEtiquetaDerecha, yEtiquetaDerecha);
+            int xEtiquetaDerecha = (3 * anchoPanel + g.getFontMetrics().stringWidth(nombreJugador2)) / 4;
+            int yEtiquetaDerecha = yRectangulo - 20;
+            g.drawString(nombreJugador2, xEtiquetaDerecha, yEtiquetaDerecha);
+        }
 
         // Marcador
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 22));
-        String etiquetaCentral = "0 : 0";
+        int yEtiquetaIzquierda = 0 ;
+        String etiquetaCentral = puntuacionJugador1 + " : " + puntuacionJugador2;
         int xEtiquetaCentral = (anchoPanel - g.getFontMetrics().stringWidth(etiquetaCentral)) / 2;
         int yEtiquetaCentral = yEtiquetaIzquierda;
         g.drawString(etiquetaCentral, xEtiquetaCentral, yEtiquetaCentral);
-
     }
 }

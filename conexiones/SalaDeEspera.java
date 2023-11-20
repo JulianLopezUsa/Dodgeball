@@ -1,7 +1,7 @@
 package conexiones;
 
-import DamasEnLinea.JugarServidor;
-import damas.Jugador;
+// import JugarServidor;
+import Vista.Jugador;
 import java.io.IOException;
 
 public class SalaDeEspera extends javax.swing.JDialog implements Runnable{
