@@ -1,7 +1,8 @@
 package conexiones;
 
-// import JugarServidor;
+import Controlador.JugarServidor;
 import Vista.Jugador;
+import Vista.Animacion;
 import java.io.IOException;
 
 public class SalaDeEspera extends javax.swing.JDialog implements Runnable{
@@ -32,7 +33,7 @@ public class SalaDeEspera extends javax.swing.JDialog implements Runnable{
         texto = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        animacion1 = new Interfaz.Animacion();
+        animacion1 = new Vista.Animacion();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sala De Espera");

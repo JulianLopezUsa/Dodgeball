@@ -1,31 +1,17 @@
 package Vista;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import javax.swing.*;
 
-public class Pelota {
-    private Image imagenPelota;
-    private int x;
-    private int y;
 
-    public Pelota(String rutaImagen, int x, int y) {
-        try {
-            imagenPelota = ImageIO.read(new File(rutaImagen));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        this.x = x;
-        this.y = y;
+public class Pelota extends JFrame {
+    private Pelota Pelota;
+
+    public Pelota(Pelota Pelota) {
+        this.Pelota = Pelota;
+
+        setTitle("Juego");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
-
-    public void dibujar(Graphics g) {
-        if (imagenPelota != null) {
-            g.drawImage(imagenPelota, x, y, null);
-        }
-    }
-
-   
 }

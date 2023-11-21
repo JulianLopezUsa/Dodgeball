@@ -17,13 +17,7 @@ public class Juego extends JFrame implements ActionListener {
     private int puntuacionJugador2;
 
     public Juego() {
-        // Configuración de la ventana principal
-        setTitle("Juego de Dodgeball");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setSize(1200, 700);
-        setLocationRelativeTo(null);
-
+  
         // Inicialización del tablero
         tablero = new Tablero();
 
